@@ -60,10 +60,10 @@ router.get('/users/me', auth, async (req, res) => {
     res.send(req.user)
 })
 
-// View Profile by id
+// Update Profile
 router.patch('/users/me', auth, async (req, res) => {
     const updates = Object.keys(req.body)
-    const validUpdates = ['name', 'email', 'password', 'age']
+    const validUpdates = ['name', 'password', 'age']
     const isValidUpdate = updates.every((update) => validUpdates.includes(update))
     if(!isValidUpdate){
         return res.status(400).send('Invalid Update !')
